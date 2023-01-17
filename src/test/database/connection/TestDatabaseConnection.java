@@ -17,7 +17,7 @@ public class TestDatabaseConnection {
 			
 			@SuppressWarnings("unused")
 			Connection connection = DriverManager.getConnection
-					("jdbc:mysql://localhost:3306/hibernate-02-one-to-many?useSSL=false&amp",
+					("jdbc:mysql://localhost:3306/hibernate-tutorial-3-one-to-many-mapping?useSSL=false&amp",
 							name,
 							password);
 			

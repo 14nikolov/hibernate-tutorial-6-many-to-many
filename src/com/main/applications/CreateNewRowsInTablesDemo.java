@@ -28,7 +28,7 @@ public class CreateNewRowsInTablesDemo {
 		
 		// Initializing Instructor, InstructorDetail and Course Objects
 		Instructor instructor = new Instructor("John", "Doe","johndoe@lorem.ipsum");
-		InstructorDetail instructorDetail = new InstructorDetail("luv2code", "fashion");
+		InstructorDetail instructorDetail = new InstructorDetail("JohnDoeChannel", "fashion");
 		Course course1 = new Course("WICK CLASS - KILL EVERYONE WITH A PENCIL");
 		Course course2 = new Course("HOW TO MASTER PAC-MAN WITH CHEATS");
 		Course course3 = new Course("HOW TO MAKE DOUGH - THE ULTIMATE MASTERCLASS");
