@@ -1,4 +1,4 @@
-# hibernate-tutorial-3-one-to-many-mapping
+# hibernate-tutorial-6-many-to-many
 
 ---I. Project Purpose ----------------------------------------------------------------------------------- 
 	
