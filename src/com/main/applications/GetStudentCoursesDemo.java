@@ -10,7 +10,7 @@ import com.tables.entities.InstructorDetail;
 import com.tables.entities.Review;
 import com.tables.entities.Student;
 
-public class DeleteCourseDemo {
+public class GetStudentCoursesDemo {
 	
 	public static void main(String[] args) {
 	
@@ -35,12 +35,15 @@ public class DeleteCourseDemo {
 	// begin a new transaction
 	session.beginTransaction();
 	
-	int courseId = 13;
-	Course course = session.get(Course.class, courseId);
-	
-	// Deleting Course
-	System.out.println("Deleting Course");
-	session.delete(course);
+	// Retrieving a student from the database
+	int studentId = 1;
+	Student student = session.get(Student.class, studentId);
+	// Printing the retrieved student
+	System.out.println("Printing student: ");
+	System.out.println(student);
+	// Retrieving and printing the courses of our Student
+	System.out.println("Printing courses: ");
+	System.out.println(student.getCourses());
 	
 	// save changes performed during transaction and end transaction
 	session.getTransaction().commit();

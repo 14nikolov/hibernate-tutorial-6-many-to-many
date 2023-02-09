@@ -8,9 +8,8 @@ import com.tables.entities.Course;
 import com.tables.entities.Instructor;
 import com.tables.entities.InstructorDetail;
 import com.tables.entities.Review;
-import com.tables.entities.Student;
 
-public class DeleteCourseDemo {
+public class CreateCourseAndReviewsDemo {
 	
 	public static void main(String[] args) {
 	
@@ -21,7 +20,6 @@ public class DeleteCourseDemo {
 			addAnnotatedClass(InstructorDetail.class).
 			addAnnotatedClass(Course.class).
 			addAnnotatedClass(Review.class).
-			addAnnotatedClass(Student.class).
 			buildSessionFactory();
 	
 	// creating a new session
@@ -35,12 +33,22 @@ public class DeleteCourseDemo {
 	// begin a new transaction
 	session.beginTransaction();
 	
-	int courseId = 13;
-	Course course = session.get(Course.class, courseId);
+	// Creating a new Course
+	Course course = new Course("How to Eat 5");
+	// Creating a Review
+	Review review1 = new Review("great course");
+	// Adding that review to our course
+	course.addReview(review1);
+	// creating and adding reviews for our course
+	course.addReview(new Review("worst course I ever taken in my life"));
+	course.addReview(new Review("well done course from start to finish"));
 	
-	// Deleting Course
-	System.out.println("Deleting Course");
-	session.delete(course);
+	// Logging messages
+	System.out.println("Saving course and reviews for course");
+	System.out.println(course);
+	System.out.println("Saving reviews for course");
+	System.out.println(course.getReviews());
+	session.save(course);
 	
 	// save changes performed during transaction and end transaction
 	session.getTransaction().commit();

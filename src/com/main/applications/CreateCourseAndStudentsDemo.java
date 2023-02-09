@@ -10,7 +10,7 @@ import com.tables.entities.InstructorDetail;
 import com.tables.entities.Review;
 import com.tables.entities.Student;
 
-public class DeleteCourseDemo {
+public class CreateCourseAndStudentsDemo {
 	
 	public static void main(String[] args) {
 	
@@ -35,12 +35,27 @@ public class DeleteCourseDemo {
 	// begin a new transaction
 	session.beginTransaction();
 	
-	int courseId = 13;
-	Course course = session.get(Course.class, courseId);
+	// Creating a new Course
+	Course course = new Course("Latino Dancing 6");
+	// Creating a Student
+	Student student = new Student("Josh", "Gates", "joshgates@email.com");
+	// Adding that student to our course
+	course.addStudent(student);
+	// creating and adding students for our course
+	course.addStudent(new Student("Emily", "Vaucher", "emily@gmail.com"));
+	course.addStudent(new Student("Kevin", "Bowy", "kev@greatmail.com"));
 	
-	// Deleting Course
-	System.out.println("Deleting Course");
-	session.delete(course);
+	// Logging messages
+	System.out.println("Saving course and students");
+	// IMPORTANT:
+	// here instead of using "session.save()",
+	// we will use "session.persist()", because the cascade type is not set to IDENTITY,
+	// but instead we specify only some actions to be cascaded
+	session.persist(course);
+	
+	System.out.println("Printing out saved course and students: ");
+	System.out.println(course);
+	System.out.println(course.getStudents());
 	
 	// save changes performed during transaction and end transaction
 	session.getTransaction().commit();
